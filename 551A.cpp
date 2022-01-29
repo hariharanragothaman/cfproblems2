@@ -1,5 +1,5 @@
 /**
- * File              : 1445A.cpp
+ * File              : 551A.cpp
  * Author            : cppygod
  * Date              : 23.01.2022
  * Last Modified Date: 28.01.2022
@@ -35,44 +35,40 @@ void print(std::vector<T> const &v)
 
 void solve()
 {
-	int n, x;
-	cin >> n >> x;
-	vector<int> A(n, 0);
+	unordered_map<int,int> H;
+	int n; 
+	cin >> n;
 	vector<int> B(n, 0);
-	for(int i=0; i<n; i++) 
-	{
-		cin >> A[i];
-	}
+
+	for(int i=0; i<n; i++) cin >> B[i];
+	
+	vector<int> A = B; 
+	sort(A.begin(), A.end());
+	reverse(A.begin(), A.end());
+
+
+	unordered_map<int, int> pos;
 	for(int i=0; i<n; i++)
 	{
-		cin >> B[i];
+		pos[A[i]] = INT_MAX;
 	}
-	// Check Rearrange b so that ai+bi <= x
-	
-	sort(A.begin(), A.end());	
-	sort(B.begin(), B.end());
-	reverse(B.begin(), B.end());
 
 	for(int i=0; i<n; i++)
 	{
-		if(B[i] + A[i] <= x)
-		{
-			continue;
-		}
-		else 
-		{
-			cout << "No" << endl;
-			return;
-		}
+		pos[A[i]] = min(pos[A[i]], i+1);
 	}
-	cout << "Yes" << endl;
+
+	for(int i=0; i<n; i++)
+	{
+		cout << pos[B[i]] << " ";
+	}
+	cout << endl;
 }
 
 int32_t main()
 {
     ENABLEFASTIO();
-    int T;
-    cin >> T;
+    int T = 1;
     while(T--)
         solve();
 }

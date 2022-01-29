@@ -1,5 +1,5 @@
 /**
- * File              : 1445A.cpp
+ * File              : 609A.cpp
  * Author            : cppygod
  * Date              : 23.01.2022
  * Last Modified Date: 28.01.2022
@@ -35,44 +35,44 @@ void print(std::vector<T> const &v)
 
 void solve()
 {
-	int n, x;
-	cin >> n >> x;
-	vector<int> A(n, 0);
-	vector<int> B(n, 0);
-	for(int i=0; i<n; i++) 
+	int n; 
+	cin >> n;
+
+	int m; 
+	cin >> m; 
+
+	vector<int> A (n, 0);
+	for(int i=0; i<n; i++)
 	{
 		cin >> A[i];
 	}
-	for(int i=0; i<n; i++)
-	{
-		cin >> B[i];
-	}
-	// Check Rearrange b so that ai+bi <= x
 	
-	sort(A.begin(), A.end());	
-	sort(B.begin(), B.end());
-	reverse(B.begin(), B.end());
+	sort(A.begin(), A.end());
+	reverse(A.begin(), A.end());
 
+	int cnt = 0;
 	for(int i=0; i<n; i++)
 	{
-		if(B[i] + A[i] <= x)
+		if(m > A[i])
 		{
-			continue;
+			cnt++;
+			m -= A[i];
+			
 		}
 		else 
 		{
-			cout << "No" << endl;
-			return;
+			cnt++;
+			break;
 		}
 	}
-	cout << "Yes" << endl;
+
+	cout << cnt << endl;
 }
 
 int32_t main()
 {
     ENABLEFASTIO();
-    int T;
-    cin >> T;
+    int T = 1;
     while(T--)
         solve();
 }

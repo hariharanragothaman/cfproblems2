@@ -1,5 +1,5 @@
 /**
- * File              : 1445A.cpp
+ * File              : 1561A.cpp
  * Author            : cppygod
  * Date              : 23.01.2022
  * Last Modified Date: 28.01.2022
@@ -35,37 +35,28 @@ void print(std::vector<T> const &v)
 
 void solve()
 {
-	int n, x;
-	cin >> n >> x;
+	int n; 
+	cin >> n; 
 	vector<int> A(n, 0);
-	vector<int> B(n, 0);
-	for(int i=0; i<n; i++) 
-	{
-		cin >> A[i];
-	}
-	for(int i=0; i<n; i++)
-	{
-		cin >> B[i];
-	}
-	// Check Rearrange b so that ai+bi <= x
+	for(int i=0; i<n; i++) cin >> A[i];
+	int ans = 0;
+	// Need to count how many iterations, sort of similar to that...
 	
-	sort(A.begin(), A.end());	
-	sort(B.begin(), B.end());
-	reverse(B.begin(), B.end());
-
-	for(int i=0; i<n; i++)
+	while(!is_sorted(A.begin(), A.end()))
 	{
-		if(B[i] + A[i] <= x)
+		for(int i=ans%2; i+1 < n; i+=2)
 		{
-			continue;
+			if(A[i] > A[i+1])
+			{
+				swap(A[i], A[i+1]);
+			}
+
 		}
-		else 
-		{
-			cout << "No" << endl;
-			return;
-		}
+		ans += 1;
 	}
-	cout << "Yes" << endl;
+
+	cout << ans << endl;
+
 }
 
 int32_t main()
