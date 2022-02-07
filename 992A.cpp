@@ -39,7 +39,15 @@ void solve()
 	cin >> n;
 	vector<int> A (n, 0), B(n, 0);
 	for(int i=0; i<n; i++) cin >> A[i];
-
+	set<int> s;
+	for(auto c: A)
+	{
+		if (c != 0)
+		{
+			s.insert(c);
+		}
+	}
+	cout << s.size() << endl;
 }
 
 int32_t main()
