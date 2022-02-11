@@ -3,7 +3,7 @@
 # File              : 894A.py
 # Author            : cppygod
 # Date              : 10.02.2022
-# Last Modified Date: 10.02.2022
+# Last Modified Date: 11.02.2022
 # Last Modified By  : cppygod
 
 import sys, math, cmath, time, collections
@@ -11,16 +11,29 @@ from collections import deque, Counter, OrderedDict, defaultdict
 from heapq import nsmallest, nlargest, heapify, heappop, heappush, heapreplace
 from math import ceil, floor, log, log2, sqrt, gcd, factorial, pow, pi
 from bisect import bisect_left, bisect_right
+from itertools import chain, permutations, combinations
 
 # SOME GENERAL HELPER
 def input_as_array(): return list(map(int, input().split()))
 
 start_time = time.time()
 
+def powerset(iterable):
+    s = list(iterable)
+    return chain.from_iterable(combinations(s, r) for r in range(0, 4))
 
 def main():
     s = input()
     string = "QAQ"
+    """
+    Find how many subsequences of QAQ are there
+    """
+    cnt = 0
+    for c in powerset(s):
+        if c == ('Q', 'A', 'Q'):
+            cnt += 1
+    print(cnt)
+
 
 
 if __name__ == "__main__":
