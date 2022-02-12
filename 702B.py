@@ -3,7 +3,7 @@
 # File              : 702B.py
 # Author            : cppygod
 # Date              : 10.02.2022
-# Last Modified Date: 10.02.2022
+# Last Modified Date: 11.02.2022
 # Last Modified By  : cppygod
 
 import sys, math, cmath, time, collections
@@ -40,7 +40,7 @@ def main():
     print(cnt)
 
 if __name__ == "__main__":
-    ONLINE_JUDGE = True
+    ONLINE_JUDGE = False
 
     # If it's Local - Get I/P from file
     if not ONLINE_JUDGE:
