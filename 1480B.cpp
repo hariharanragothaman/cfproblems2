@@ -2,7 +2,7 @@
  * File              : 1480B.cpp
  * Author            : cppygod
  * Date              : 23.01.2022
- * Last Modified Date: 05.02.2022
+ * Last Modified Date: 11.02.2022
  * Last Modified By  : cppygod
  */
 
@@ -68,7 +68,6 @@ void solve()
 
 	for(int i=0; i<n; i++) cin >> mpower[i];
 	for(int i=0; i<n; i++) cin >> mhealth[i];
-
 
 
 }
