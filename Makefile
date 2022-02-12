@@ -3,6 +3,7 @@
 # Date              : 23.01.2022
 # Last Modified Date: 11.02.2022
 # Last Modified By  : cppygod
+
 # +--------------------+
 # |                    |
 # |   GENERAL CONFIG   |
@@ -11,15 +12,26 @@
 
 pname := concert_tickets
 DEBUG := true
-LANG := cpp
+lang := cpp
 
 uname_p := $(shell uname -p)
 ifeq ($(uname_p),x86_64)
 	CXX := g++
-endif 
-
-ifeq ($(uname_p), arm)
+else ifeq ($(uname_p), arm)
 	CXX := g++-11
+endif
+
+ifeq ($(lang),cpp)
+TARGET := $(pname)
+EXECUTE := ./$(TARGET)
+CLEAN_TARGETS := $(TARGET)
+
+else ifeq ($(lang),python)
+TARGET := $(pname).py
+EXECUTE := python3 ./$(TARGET)
+CLEAN_TARGETS := 
+
+else 
 endif
 
 CXXFLAGS := -std=c++17 -O2 -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion
@@ -36,17 +48,28 @@ PRECOMPILE_HEADERS := bits/stdc++.h
 
 
 .PHONY: default
-default: build
+default: run 
 
 .PHONY: build
 build:
-	@ mkdir -p "output"
-	${CXX} ${CXXFLAGS}  ${pname}.cpp -o output/${pname}
+ifeq ($(lang),cpp)
+	${CXX} ${CXXFLAGS}  ${pname}.cpp -o $(TARGET) 
+
+else ifeq ($(lang),python)
+	@echo "Running Python Code"
+else 
+endif 
 
 .PHONY: run
 run: build
-	timeout 1.0s ./output/${pname} && cat data.out
+ifeq ($(lang),cpp)
+	timeout 1.0s $(EXECUTE) && cat data.out 
+else ifeq ($(lang),python)
+	timeout 1.0s $(EXECUTE) && cat data.out
+else 
+endif 
+
 
 .PHONY: clean
 clean:
-	rm -rf output/
+	rm -rf $(CLEAN_TARGETS)
