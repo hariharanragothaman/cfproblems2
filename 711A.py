@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# File              : 711A.py
+# Author            : cppygod
+# Date              : 11.02.2022
+# Last Modified Date: 05.03.2022
+# Last Modified By  : cppygod
+
+import os, sys, math, cmath, time, collections
+from collections import deque, Counter, OrderedDict, defaultdict
+from heapq import nsmallest, nlargest, heapify, heappop, heappush, heapreplace
+from math import ceil, floor, log, log2, sqrt, gcd, factorial, pow, pi
+from bisect import bisect_left, bisect_right
+
+# SOME GENERAL HELPER
+def input_as_array(): return list(map(int, input().split()))
+
+start_time = time.time()
+
+
+def main():
+    n = int(input())
+    A = []
+    for _ in range(n):
+        s = input()
+        A.append(s)
+
+    found = False
+    for i, val in enumerate(A):
+        _ss = val.split('|')
+        if _ss[0] == "OO":
+            _ss[0] = '++'
+            tmp = '|'.join(c for c in _ss)
+            A[i] = tmp 
+            print("YES")
+            found = True
+            break
+
+        if _ss[1] == "OO":
+            _ss[1] = '++'
+            tmp = '|'.join(c for c in _ss)
+            A[i] = tmp 
+            print("YES")
+            found = True
+            break
+
+    if found:
+        for c in A:
+            print(c)
+    else:
+        print("NO")
+
+if __name__ == "__main__":
+    if os.path.exists('data.in'):
+        sys.stdin = open("data.in", "r")
+        sys.stdout = open("data.out", "w")
+
+    testcases = 1
+    for i in range(testcases):
+        main()
+
+    # If it's local - Print this O/P
+    if os.path.exists('data.in'):
+        print(f"Time Elapsed: {time.time() - start_time} seconds")
+        sys.stdout.close()
