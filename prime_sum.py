@@ -2,7 +2,7 @@
 # @Author: hariharanragothaman
 # @Date:   2022-03-27 01:16:13
 # @Last Modified by:   hariharanragothaman
-# @Last Modified time: 2022-04-11 10:18:50
+# @Last Modified time: 2022-04-11 10:35:41
 
 import os, sys, math, cmath, time, collections
 from collections import deque, Counter, OrderedDict, defaultdict
@@ -18,11 +18,17 @@ start_time = time.time()
 
 
 def main():
-	s = input()
-	g = defaultdict(list)
-	for i, val in enumerate(s):
-		g[val].append(i)
-	print(g)
+    a, b = input_as_array()
+    if min(a, b) <= 1:
+        print(-1)
+        return
+    if gcd(a, b) > 1:
+        print(0)
+        return
+    else:
+        print(1)
+        return
+
 
 if __name__ == "__main__":
     if os.path.exists('data.in'):
