@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# File              : A.py
-# Author            : cppygod
-# Date              : 19.04.2022
-# Last Modified Date: 19.04.2022
-# Last Modified By  : cppygod
 # -*- coding: utf-8 -*-
 # @Author: hariharanragothaman
 # @Date:   2022-03-25 16:06:24
@@ -27,12 +20,13 @@ start_time = time.time()
 
 
 def main():
-    x, y = input_as_array()
-    total = y * 30
-    if total <= x:
-        print("YES")
+    n = int(input())
+    q = n // 4
+    r = n % 4
+    if r != 0:
+        print(q + 1)
     else:
-        print("NO")
+        print(q)
 
 
 if __name__ == "__main__":

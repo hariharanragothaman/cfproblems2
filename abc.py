@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# File              : A.py
-# Author            : cppygod
-# Date              : 19.04.2022
-# Last Modified Date: 19.04.2022
-# Last Modified By  : cppygod
 # -*- coding: utf-8 -*-
 # @Author: hariharanragothaman
 # @Date:   2022-03-25 16:06:24
@@ -16,7 +9,6 @@ from collections import deque, Counter, OrderedDict, defaultdict
 from heapq import nsmallest, nlargest, heapify, heappop, heappush, heapreplace
 from math import ceil, floor, log, log2, sqrt, gcd, factorial, pow, pi
 from bisect import bisect_left, bisect_right
-from itertools import permutations, combinations
 
 # SOME GENERAL HELPER
 def input_as_array():
@@ -27,12 +19,12 @@ start_time = time.time()
 
 
 def main():
-    x, y = input_as_array()
-    total = y * 30
-    if total <= x:
-        print("YES")
-    else:
-        print("NO")
+    d, e, f = input_as_array()
+    val1 = (d + e + f) // 2
+    a = val1 - f
+    b = val1 - e
+    c = val1 - d
+    print(a, b, c)
 
 
 if __name__ == "__main__":
@@ -40,7 +32,7 @@ if __name__ == "__main__":
         sys.stdin = open("data.in", "r")
         sys.stdout = open("data.out", "w")
 
-    testcases = int(input())
+    testcases = 1
     for i in range(testcases):
         main()
 

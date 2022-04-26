@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# File              : A.py
-# Author            : cppygod
-# Date              : 19.04.2022
-# Last Modified Date: 19.04.2022
-# Last Modified By  : cppygod
 # -*- coding: utf-8 -*-
 # @Author: hariharanragothaman
 # @Date:   2022-03-25 16:06:24
@@ -27,12 +20,38 @@ start_time = time.time()
 
 
 def main():
-    x, y = input_as_array()
-    total = y * 30
-    if total <= x:
-        print("YES")
-    else:
-        print("NO")
+    n = int(input())
+    A = input_as_array()
+    # Minimum number of ops to make array gooda
+    hmap = {"odd": 0, "even": 0}
+    for c in A:
+        if c & 1:
+            hmap["odd"] += 1
+        else:
+            hmap["even"] += 1
+
+    if hmap["odd"] == 0 or hmap["even"] == 0:
+        print(0)
+        return
+    elif hmap["even"] >= hmap["odd"]:
+        # make all odd numbers -> even
+        if hmap["odd"] % 2 == 0:
+            ans = hmap["odd"] // 2
+            print(ans)
+            return
+        else:
+            print(hmap["even"])
+            return
+
+    elif hmap["odd"] > hmap["even"]:
+        # Make all even numbers -> odd
+        # Again check if odd cnt is even or not
+        if hmap["odd"] % 2 == 0:
+            print(min(hmap["odd"] // 2, hmap["even"]))
+            return
+        else:
+            print(hmap["even"])
+            return
 
 
 if __name__ == "__main__":

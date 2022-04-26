@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# File              : A.py
-# Author            : cppygod
-# Date              : 19.04.2022
-# Last Modified Date: 19.04.2022
-# Last Modified By  : cppygod
 # -*- coding: utf-8 -*-
 # @Author: hariharanragothaman
 # @Date:   2022-03-25 16:06:24
@@ -27,12 +20,27 @@ start_time = time.time()
 
 
 def main():
-    x, y = input_as_array()
-    total = y * 30
-    if total <= x:
-        print("YES")
+    n = int(input())
+    s = input()
+    ctr = Counter(s)
+    if ctr["1"] == 0:
+        print(0)
+        return
     else:
-        print("NO")
+        cnt = 0
+        A = [i for i, val in enumerate(s) if val == "1"]
+        tmp = [A[0]]
+        q = deque(A[1:])
+
+        while q:
+            node = q.popleft()
+            if node - tmp[-1] > 1:
+                tmp.append(node)
+        # print(tmp)
+        if len(tmp) == len(A):
+            print(1)
+        else:
+            print(2)
 
 
 if __name__ == "__main__":

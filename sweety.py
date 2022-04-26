@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# File              : A.py
-# Author            : cppygod
-# Date              : 19.04.2022
-# Last Modified Date: 19.04.2022
-# Last Modified By  : cppygod
 # -*- coding: utf-8 -*-
 # @Author: hariharanragothaman
 # @Date:   2022-03-25 16:06:24
@@ -27,12 +20,26 @@ start_time = time.time()
 
 
 def main():
-    x, y = input_as_array()
-    total = y * 30
-    if total <= x:
-        print("YES")
-    else:
-        print("NO")
+    n = int(input())
+    A = input_as_array()
+
+    cnt = 0
+    ans = []
+    stack = [A[0]]
+    # To find the nearest greater element previous to it.
+    for i in range(1, n):
+        tmp = []
+        while stack and stack[-1] < A[i]:
+            stack.pop()
+        if stack:
+            ans.append(stack[-1])
+        else:
+            ans.append(-1)
+            stack.append(A[i])
+    for a, b in zip(A[1:], ans):
+        if b != -1:
+            cnt += abs(a - b)
+    print(cnt)
 
 
 if __name__ == "__main__":
@@ -40,7 +47,7 @@ if __name__ == "__main__":
         sys.stdin = open("data.in", "r")
         sys.stdout = open("data.out", "w")
 
-    testcases = int(input())
+    testcases = 1
     for i in range(testcases):
         main()
 

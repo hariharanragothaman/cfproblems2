@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# File              : A.py
-# Author            : cppygod
-# Date              : 19.04.2022
-# Last Modified Date: 19.04.2022
-# Last Modified By  : cppygod
 # -*- coding: utf-8 -*-
 # @Author: hariharanragothaman
 # @Date:   2022-03-25 16:06:24
@@ -27,10 +20,41 @@ start_time = time.time()
 
 
 def main():
-    x, y = input_as_array()
-    total = y * 30
-    if total <= x:
+    n = int(input())
+    A = input_as_array()
+    A = sorted(A, reverse=True)
+    # print(A)
+
+    i = 0
+    j = n - 2
+
+    sm_red = 0
+    sm_blue = A[n - 1]
+    red_cnt = 0
+    blue_cnt = 1
+
+    """
+    cnt of blue should be greater than red
+    sum of red must be greater than blue
+
+    """
+    while i < j:
+        if sm_red > sm_blue and red_cnt < blue_cnt:
+            print("YES")
+            # print("**************")
+            return
+        sm_red += A[i]
+        sm_blue += A[j]
+        i += 1
+        j -= 1
+        red_cnt += 1
+        blue_cnt += 1
+        # print("Sum red:", sm_red, red_cnt)
+        # print("Sum blue", sm_blue, blue_cnt)
+
+    if sm_red > sm_blue and red_cnt < blue_cnt:
         print("YES")
+        return
     else:
         print("NO")
 

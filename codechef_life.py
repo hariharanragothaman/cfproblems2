@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# File              : A.py
-# Author            : cppygod
-# Date              : 19.04.2022
-# Last Modified Date: 19.04.2022
-# Last Modified By  : cppygod
 # -*- coding: utf-8 -*-
 # @Author: hariharanragothaman
 # @Date:   2022-03-25 16:06:24
@@ -25,14 +18,27 @@ def input_as_array():
 
 start_time = time.time()
 
+def is_sub_sequence2(s, t):
+    t = iter(t)
+    return all(c in t for c in s)
 
 def main():
-    x, y = input_as_array()
-    total = y * 30
-    if total <= x:
-        print("YES")
+    n = int(input())
+    n, m = input_as_array()  # lengths of S and A
+    S = input()
+    A = input()
+    ss = "abcde"
+
+    if m > n:
+        print(-1)
+        return 
+    if is_sub_sequence2(A, S):
+        print(-1)
+        return
     else:
-        print("NO")
+        # We need to form S' by replacing '?' smartly.
+        
+
 
 
 if __name__ == "__main__":
