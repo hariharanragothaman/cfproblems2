@@ -1,5 +1,4 @@
 
-
 # +--------------------+
 # |                    |
 # |   GENERAL CONFIG   |
@@ -19,7 +18,7 @@ endif
 
 ifeq ($(lang),cpp)
 TARGET := $(pname)
-EXECUTE := $(TARGET)
+EXECUTE := ./$(TARGET)
 CLEAN_TARGETS := $(TARGET)
 
 else ifeq ($(lang),python)
